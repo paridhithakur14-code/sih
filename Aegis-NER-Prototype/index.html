@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#081311">
+  <meta name="description" content="Aegis NER is an AI-enabled landslide early warning and response command prototype for North East India.">
+  <title>Aegis NER — Landslide Early Warning</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to dashboard</a>
+
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Primary navigation">
+      <a class="brand" href="#overview" aria-label="Aegis NER dashboard">
+        <span class="brand-mark" aria-hidden="true"><span></span></span>
+        <span><b>AEGIS</b><small>NER COMMAND</small></span>
+      </a>
+
+      <nav class="side-nav">
+        <button class="nav-item active" data-target="overview"><span>01</span>Overview</button>
+        <button class="nav-item" data-target="risk-map"><span>02</span>Live risk map</button>
+        <button class="nav-item" data-target="road-network"><span>03</span>Road network</button>
+        <button class="nav-item" data-target="field-reports"><span>04</span>Field reports</button>
+        <button class="nav-item" data-target="alert-center"><span>05</span>Alert center</button>
+        <button class="nav-item" data-target="analytics"><span>06</span>AI analytics</button>
+      </nav>
+
+      <div class="system-card">
+        <div class="system-title"><span class="pulse-dot"></span>Prediction engine</div>
+        <strong>Model operational</strong>
+        <div class="meter"><i style="width:96%"></i></div>
+        <small>Confidence 96.4% · v2.8</small>
+      </div>
+    </aside>
+
+    <div class="workspace">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">MDoNER · Disaster Management</p>
+          <h1>North East Risk Command</h1>
+        </div>
+        <div class="top-actions">
+          <button class="network-pill" id="offlineDemo" aria-pressed="false" title="Toggle the offline workflow demo">
+            <span class="status-dot"></span><span id="networkText">Live network</span>
+          </button>
+          <label class="select-wrap"><span class="sr-only">Notification language</span>
+            <select id="languageSelect" aria-label="Notification language">
+              <option value="en">English</option>
+              <optgroup label="North Eastern Region">
+                <option value="as">অসমীয়া · Assamese</option>
+                <option value="bn">বাংলা · Bengali</option>
+                <option value="brx">बर’ · Bodo</option>
+                <option value="mni">মৈতৈলোন্ · Manipuri</option>
+                <option value="lus">Mizo ṭawng · Mizo</option>
+                <option value="kha">Khasi</option>
+                <option value="grt">Garo</option>
+                <option value="ne">नेपाली · Nepali</option>
+                <option value="trp">Kokborok</option>
+                <option value="nag">Nagamese</option>
+                <option value="njz">Nyishi</option>
+                <option value="adi">Adi</option>
+                <option value="njo">Ao Naga</option>
+                <option value="nmf">Tangkhul</option>
+              </optgroup>
+              <optgroup label="Other Indian languages">
+                <option value="hi">हिन्दी · Hindi</option>
+                <option value="or">ଓଡ଼ିଆ · Odia</option>
+                <option value="pa">ਪੰਜਾਬੀ · Punjabi</option>
+                <option value="ur">اردو · Urdu</option>
+                <option value="sa">संस्कृतम् · Sanskrit</option>
+                <option value="mai">मैथिली · Maithili</option>
+                <option value="sat">ᱥᱟᱱᱛᱟᱲᱤ · Santali</option>
+                <option value="sd">سنڌي · Sindhi</option>
+                <option value="mr">मराठी · Marathi</option>
+                <option value="gu">ગુજરાતી · Gujarati</option>
+                <option value="kok">कोंकणी · Konkani</option>
+                <option value="kn">ಕನ್ನಡ · Kannada</option>
+                <option value="ml">മലയാളം · Malayalam</option>
+                <option value="ta">தமிழ் · Tamil</option>
+                <option value="te">తెలుగు · Telugu</option>
+                <option value="doi">डोगरी · Dogri</option>
+                <option value="ks">کٲشُر · Kashmiri</option>
+              </optgroup>
+            </select>
+          </label>
+          <button class="button primary" id="openReport">+ Field report</button>
+        </div>
+      </header>
+
+      <main id="main-content">
+        <section class="critical-banner" id="overview" aria-labelledby="warningHeading">
+          <div class="warning-icon" aria-hidden="true">!</div>
+          <div>
+            <p class="eyebrow">Critical warning · Updated <span id="updatedTime">just now</span></p>
+            <h2 id="warningHeading">Slope failure likely near NH-10, Gangtok</h2>
+            <p id="warningText">Extreme soil saturation and 128 mm rainfall indicate a possible landslide within 6–12 hours.</p>
+          </div>
+          <div class="banner-actions">
+            <button class="button danger" id="openAlert">Issue alert</button>
+            <button class="button ghost" data-focus-region="gangtok">View zone</button>
+          </div>
+        </section>
+
+        <section class="kpi-grid" aria-label="Current risk summary">
+          <article class="kpi critical"><span class="kpi-tag">Critical zones</span><strong>04</strong><small>2 require immediate action</small><div class="spark"><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+          <article class="kpi high"><span class="kpi-tag">High-risk zones</span><strong>12</strong><small>+3 since last rainfall update</small><div class="spark"><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+          <article class="kpi roads"><span class="kpi-tag">Road disruptions</span><strong>07</strong><small>3 blocked · 4 restricted</small><div class="spark"><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+          <article class="kpi reach"><span class="kpi-tag">People at risk</span><strong>8.4K</strong><small>Across 19 vulnerable villages</small><div class="spark"><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+        </section>
+
+        <section class="command-grid" id="risk-map">
+          <article class="panel map-panel">
+            <div class="panel-heading">
+              <div><p class="eyebrow">Geospatial intelligence</p><h2>Live landslide risk map</h2></div>
+              <div class="map-controls" role="group" aria-label="Map layers">
+                <button class="chip active" data-layer="risk">Risk</button>
+                <button class="chip" data-layer="roads">Roads</button>
+                <button class="chip" data-layer="sensors">Sensors</button>
+              </div>
+            </div>
+
+            <div class="map-canvas" id="mapCanvas">
+              <div class="map-grid" aria-hidden="true"></div>
+              <svg class="ner-map" viewBox="0 0 760 470" role="img" aria-labelledby="mapTitle mapDesc">
+                <title id="mapTitle">North East India prototype risk map</title>
+                <desc id="mapDesc">Stylized GIS view showing risk zones, roads, rivers and sensor locations across the North Eastern Region.</desc>
+                <defs>
+                  <filter id="glow"><feGaussianBlur stdDeviation="5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                  <pattern id="dots" width="16" height="16" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="#88a89f" opacity=".15"/></pattern>
+                </defs>
+                <path class="region-outline" d="M95,285 C155,257 184,241 230,220 C298,190 336,100 424,82 C504,66 595,90 675,145 C705,166 698,205 654,210 C610,215 607,257 557,250 C510,243 488,282 454,290 C395,304 376,361 328,373 C272,386 233,350 193,340 C149,330 105,338 78,315 Z"/>
+                <path class="state" data-state="Assam" d="M143,266 C210,235 286,210 366,208 C442,206 518,187 613,173 C641,169 658,188 630,203 C558,238 474,232 397,244 C314,258 245,289 176,303 Z"/>
+                <path class="state" data-state="Arunachal Pradesh" d="M281,170 C330,104 409,83 492,90 C559,95 626,117 675,151 C623,158 580,164 528,174 C450,190 375,199 304,199 Z"/>
+                <path class="state" data-state="Sikkim" d="M104,236 L137,222 L150,257 L124,278 L98,263 Z"/>
+                <path class="state" data-state="Meghalaya" d="M213,298 C260,281 315,276 365,278 L354,317 C301,329 254,326 207,316 Z"/>
+                <path class="state" data-state="Nagaland" d="M493,246 L548,227 L570,273 L530,313 L491,289 Z"/>
+                <path class="state" data-state="Manipur" d="M479,294 L529,315 L516,366 L472,372 L454,331 Z"/>
+                <path class="state" data-state="Mizoram" d="M397,325 L452,331 L448,402 L406,425 L382,379 Z"/>
+                <path class="state" data-state="Tripura" d="M323,326 L364,320 L380,377 L345,404 L315,367 Z"/>
+                <path class="river" d="M162,274 C248,248 283,232 371,228 C463,224 529,198 620,187"/>
+                <g class="road-layer">
+                  <path class="road-line" d="M126,252 L226,267 L340,242 L436,243 L528,274"/>
+                  <path class="road-line dashed" d="M336,243 L352,304 L424,357 L487,343"/>
+                  <text x="247" y="257" class="road-label">NH-27</text><text x="102" y="241" class="road-label">NH-10</text>
+                </g>
+                <g class="sensor-layer">
+                  <g class="sensor" transform="translate(270 244)"><circle r="5"/><circle r="12"/></g>
+                  <g class="sensor" transform="translate(435 225)"><circle r="5"/><circle r="12"/></g>
+                  <g class="sensor" transform="translate(520 166)"><circle r="5"/><circle r="12"/></g>
+                  <g class="sensor" transform="translate(418 350)"><circle r="5"/><circle r="12"/></g>
+                </g>
+                <g class="place-labels" aria-hidden="true">
+                  <text x="332" y="188">ARUNACHAL PRADESH</text><text x="318" y="266">ASSAM</text><text x="235" y="308">MEGHALAYA</text><text x="496" y="286">NAGALAND</text><text x="469" y="348">MANIPUR</text><text x="391" y="383">MIZORAM</text><text x="320" y="366">TRIPURA</text><text x="92" y="294">SIKKIM</text>
+                </g>
+                <g class="risk-markers">
+                  <g class="map-marker critical selected" data-region="gangtok" role="button" tabindex="0" aria-label="Gangtok, critical risk">
+                    <circle cx="124" cy="255" r="22" class="halo"/><circle cx="124" cy="255" r="9"/><text x="141" y="251">GANGTOK</text><text x="141" y="268" class="risk-value">91%</text>
+                  </g>
+                  <g class="map-marker high" data-region="tawang" role="button" tabindex="0" aria-label="Tawang, high risk">
+                    <circle cx="430" cy="126" r="18" class="halo"/><circle cx="430" cy="126" r="8"/><text x="447" y="122">TAWANG</text><text x="447" y="139" class="risk-value">83%</text>
+                  </g>
+                  <g class="map-marker high" data-region="cherrapunji" role="button" tabindex="0" aria-label="Cherrapunji, high risk">
+                    <circle cx="274" cy="303" r="18" class="halo"/><circle cx="274" cy="303" r="8"/><text x="291" y="299">CHERRAPUNJI</text><text x="291" y="316" class="risk-value">76%</text>
+                  </g>
+                  <g class="map-marker moderate" data-region="kohima" role="button" tabindex="0" aria-label="Kohima, moderate risk">
+                    <circle cx="524" cy="276" r="16" class="halo"/><circle cx="524" cy="276" r="7"/><text x="541" y="272">KOHIMA</text><text x="541" y="289" class="risk-value">58%</text>
+                  </g>
+                  <g class="map-marker low" data-region="agartala" role="button" tabindex="0" aria-label="Agartala, low risk">
+                    <circle cx="345" cy="363" r="14" class="halo"/><circle cx="345" cy="363" r="7"/><text x="362" y="359">AGARTALA</text><text x="362" y="376" class="risk-value">31%</text>
+                  </g>
+                </g>
+              </svg>
+              <div class="map-scale"><span></span>25 km</div>
+              <div class="map-legend"><span><i class="dot low"></i>Low</span><span><i class="dot moderate"></i>Moderate</span><span><i class="dot high"></i>High</span><span><i class="dot critical"></i>Critical</span></div>
+            </div>
+          </article>
+
+          <aside class="panel intelligence-panel" aria-live="polite">
+            <div class="intel-top"><div><p class="eyebrow">AI risk intelligence</p><h2 id="regionTitle">Gangtok · NH-10</h2><p id="regionMeta">East Sikkim · 27.3389° N, 88.6065° E</p></div><span class="severity critical" id="severityBadge">Critical</span></div>
+            <div class="risk-summary">
+              <div class="risk-ring" id="riskRing" style="--risk:91"><div><strong id="riskScore">91</strong><small>% RISK</small></div></div>
+              <div><span>Forecast window</span><strong id="forecastWindow">6–12 hours</strong><small id="confidenceText">Model confidence 96.4%</small></div>
+            </div>
+            <div class="metric-grid">
+              <div><span>Rainfall · 24h</span><strong id="rainfallMetric">128 <small>mm</small></strong><i class="metric-bar"><b id="rainBar" style="width:92%"></b></i></div>
+              <div><span>Soil moisture</span><strong id="soilMetric">91 <small>%</small></strong><i class="metric-bar"><b id="soilBar" style="width:91%"></b></i></div>
+              <div><span>Slope angle</span><strong id="slopeMetric">42 <small>°</small></strong><i class="metric-bar"><b id="slopeBar" style="width:84%"></b></i></div>
+              <div><span>Past events</span><strong id="historyMetric">07</strong><i class="metric-bar"><b id="historyBar" style="width:70%"></b></i></div>
+            </div>
+            <div class="explain-box"><span class="ai-label">AI EXPLANATION</span><p id="aiExplanation">Rapid 24-hour rainfall and near-saturated soil are the strongest drivers. Steep cut slopes along NH-10 increase failure likelihood.</p></div>
+            <div class="intel-actions"><button class="button primary wide" id="panelAlert">Send early warning</button><button class="button outline" id="dispatchBtn">Dispatch</button></div>
+          </aside>
+        </section>
+
+        <section class="operations-grid">
+          <article class="panel priority-panel">
+            <div class="panel-heading"><div><p class="eyebrow">Emergency response</p><h2>Priority queue</h2></div><span class="updated-label">AI ranked · live</span></div>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>Priority</th><th>Location</th><th>Exposure</th><th>Access</th><th>Recommended action</th></tr></thead>
+                <tbody>
+                  <tr><td><span class="rank critical">01</span></td><td><strong>Gangtok · NH-10</strong><small>East Sikkim</small></td><td>2,400 people</td><td><span class="status blocked">Blocked</span></td><td>Evacuate & clear route</td></tr>
+                  <tr><td><span class="rank critical">02</span></td><td><strong>Tawang · BCT Road</strong><small>Arunachal Pradesh</small></td><td>1,200 people</td><td><span class="status restricted">Restricted</span></td><td>Pre-position response team</td></tr>
+                  <tr><td><span class="rank high">03</span></td><td><strong>Cherrapunji · SH-5</strong><small>Meghalaya</small></td><td>850 people</td><td><span class="status open">Open</span></td><td>Issue travel advisory</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+
+          <article class="panel road-panel" id="road-network">
+            <div class="panel-heading"><div><p class="eyebrow">Connectivity</p><h2>Road network</h2></div><button class="text-button" id="refreshRoads">Refresh</button></div>
+            <div class="road-list">
+              <button data-focus-region="gangtok"><i class="road-state blocked"></i><span><strong>NH-10 · Gangtok</strong><small>Km 24–29 · debris reported</small></span><b>BLOCKED</b></button>
+              <button data-focus-region="tawang"><i class="road-state restricted"></i><span><strong>BCT Road · Tawang</strong><small>Sela Pass · single lane</small></span><b>RESTRICTED</b></button>
+              <button data-focus-region="cherrapunji"><i class="road-state risk"></i><span><strong>SH-5 · Cherrapunji</strong><small>Watch zone · cracks reported</small></span><b>AT RISK</b></button>
+              <button data-focus-region="kohima"><i class="road-state open"></i><span><strong>NH-29 · Kohima</strong><small>Traffic moving normally</small></span><b>OPEN</b></button>
+            </div>
+          </article>
+        </section>
+
+        <section class="lower-grid" id="analytics">
+          <article class="panel simulator-panel">
+            <div class="panel-heading"><div><p class="eyebrow">Predictive sandbox</p><h2>AI risk simulator</h2></div><span class="prototype-badge">Prototype model</span></div>
+            <p class="section-copy">Adjust field conditions to see how the explainable risk engine changes the forecast.</p>
+            <div class="simulator-layout">
+              <div class="sliders">
+                <label>Rainfall / 24h <output id="rainOutput">128 mm</output><input id="rainSlider" type="range" min="0" max="180" value="128"></label>
+                <label>Soil moisture <output id="soilOutput">91%</output><input id="soilSlider" type="range" min="0" max="100" value="91"></label>
+                <label>Slope angle <output id="slopeOutput">42°</output><input id="slopeSlider" type="range" min="5" max="60" value="42"></label>
+                <label>Historical events <output id="historyOutput">7</output><input id="historySlider" type="range" min="0" max="12" value="7"></label>
+              </div>
+              <div class="sim-result"><span>Predicted probability</span><strong id="simScore">91%</strong><div class="sim-band"><i id="simBand" style="width:91%"></i></div><b id="simSeverity">CRITICAL</b><small id="simForecast">Action window: 6–12 hours</small></div>
+            </div>
+          </article>
+
+          <article class="panel reports-panel" id="field-reports">
+            <div class="panel-heading"><div><p class="eyebrow">Citizen & field intelligence</p><h2>Latest verified reports</h2></div><button class="text-button" id="openReportSecondary">New report</button></div>
+            <div class="report-list" id="reportList">
+              <article><span class="report-type crack">CRACK</span><div><strong>Fresh ground cracks near Dikchu Road</strong><p>Submitted by field officer · GPS verified</p></div><time>12 min</time></article>
+              <article><span class="report-type debris">DEBRIS</span><div><strong>Falling rocks blocking one lane</strong><p>Citizen report · image attached</p></div><time>28 min</time></article>
+              <article><span class="report-type movement">MOVE</span><div><strong>Visible slope movement above NH-10</strong><p>Sensor team · priority verification</p></div><time>41 min</time></article>
+            </div>
+            <div class="offline-queue" id="offlineQueue"><span>Offline queue</span><strong><b id="queueCount">0</b> reports waiting to sync</strong></div>
+          </article>
+        </section>
+
+        <section class="panel alert-log" id="alert-center">
+          <div class="panel-heading"><div><p class="eyebrow">Multi-channel warning delivery</p><h2>Alert center</h2></div><button class="button outline" id="openAlertSecondary">Compose warning</button></div>
+          <div class="alert-stats"><div><strong>12,840</strong><span>Recipients reached</span></div><div><strong>94.2%</strong><span>Delivery rate</span></div><div><strong>03</strong><span>Active warnings</span></div><div><strong>32</strong><span>Languages ready</span></div></div>
+          <div class="timeline">
+            <article><time>12:42</time><i class="critical"></i><div><strong>Critical landslide warning · Gangtok</strong><p>SMS, app, district control room · 4,290 recipients</p></div><span>Delivered</span></article>
+            <article><time>11:18</time><i class="high"></i><div><strong>Heavy rainfall advisory · Tawang</strong><p>SMS, app, community radio · 2,160 recipients</p></div><span>Delivered</span></article>
+            <article><time>09:34</time><i class="moderate"></i><div><strong>Travel caution · Cherrapunji SH-5</strong><p>App and highway message board · 1,820 recipients</p></div><span>Active</span></article>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <dialog id="reportDialog" class="modal">
+    <form method="dialog" id="reportForm">
+      <div class="modal-head"><div><p class="eyebrow">Geo-tagged field intelligence</p><h2>Report a hazard</h2></div><button class="close-button" value="cancel" aria-label="Close">×</button></div>
+      <div class="offline-notice" id="offlineNotice"><span></span><p><strong>Offline capture ready</strong>Your report will be securely queued and synced when connection returns.</p></div>
+      <div class="form-grid">
+        <label>Incident type<select id="incidentType" required><option value="">Select hazard</option><option>Ground crack</option><option>Slope movement</option><option>Falling rocks</option><option>Road blockage</option><option>Landslide</option></select></label>
+        <label>Severity<select id="incidentSeverity" required><option>Moderate</option><option>High</option><option>Critical</option></select></label>
+      </div>
+      <label>Location<div class="location-row"><input id="reportLocation" placeholder="Village, road or landmark" required><button type="button" class="button outline" id="useLocation">Use GPS</button></div><small id="gpsStatus">Coordinates will be attached to the report</small></label>
+      <label>Photo or short video<div class="upload-box"><input id="mediaUpload" type="file" accept="image/*,video/*"><span><b>Choose evidence</b><small id="fileName">JPG, PNG or MP4 · saved offline if needed</small></span></div></label>
+      <label>Description<textarea id="incidentDescription" rows="3" placeholder="Describe cracks, movement, road condition or nearby risks…" required></textarea></label>
+      <div class="modal-actions"><button class="button ghost" value="cancel">Cancel</button><button class="button primary" type="submit" value="default">Submit report</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="alertDialog" class="modal alert-modal">
+    <form method="dialog" id="alertForm">
+      <div class="modal-head"><div><p class="eyebrow">Emergency broadcast</p><h2>Issue early warning</h2></div><button class="close-button" value="cancel" aria-label="Close">×</button></div>
+      <div class="alert-preview"><span>CRITICAL · LANDSLIDE WARNING</span><strong id="alertPreviewTitle">Gangtok — NH-10 corridor</strong><p id="alertPreviewText">Landslide risk is critical. Avoid NH-10 and follow district administration instructions. Possible slope failure within 6–12 hours.</p></div>
+      <fieldset><legend>Delivery channels</legend><label class="check"><input type="checkbox" checked> SMS to local communities</label><label class="check"><input type="checkbox" checked> District control room</label><label class="check"><input type="checkbox" checked> Mobile app & push notification</label><label class="check"><input type="checkbox"> Community radio relay</label></fieldset>
+      <div class="form-grid"><label>Alert radius<select><option>10 km · 4,290 people</option><option>20 km · 8,740 people</option><option>District-wide · 12,840 people</option></select></label><label>Language<select id="alertLanguage" aria-label="Alert preview language"></select></label></div>
+      <div class="modal-actions"><button class="button ghost" value="cancel">Cancel</button><button class="button danger" type="submit" value="default">Confirm & send warning</button></div>
+    </form>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"><span>✓</span><div><strong id="toastTitle">Action complete</strong><p id="toastText">The prototype action was recorded.</p></div></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
